@@ -1,0 +1,73 @@
+@media only screen and (min-width:1280px) { /*ПК и более*/
+ .header__text {
+ 	font-size: 20pt;
+ }
+}
+
+@media (min-width:1024px) and (max-width:1279px) { /*Планшеты(альбом), нетбуки*/
+ .header__text {
+ 	font-size: 24pt;
+ }
+}
+
+@media (min-width:768px) and (max-width:1023px) { /*Планшеты(портрет)*/
+ .header__text {
+ 	font-size: 28pt;
+ }
+}
+
+@media (min-width:600px) and (max-width:767px) { /*Небольшие планшеты*/
+ .header__text {
+ 	font-size: 32pt;
+ }
+}
+
+@media (min-width:480px) and (max-width:599px) { /*Мобильные устройства(альбом)*/
+ .header__text {
+ 	font-size: 36pt;
+ }
+}
+
+@media screen and (max-width:479px) { /*Мобильные устройства(альбом)*/
+ .header__text {
+ 	font-size: 40pt;
+ }
+}
+
+@media only screen and (max-width:320px) { /*Мобильные устройства(портрет)*/
+ .header__text {
+ 	font-size: 44pt;
+ }
+}
+
+.nav {
+	display: flex;
+	justify-content: flex-end; /*Размещение справа*/
+	background: #008aFF;
+}
+
+.nav .nav__link {
+	color: #fff;
+	padding: 15px 10px;
+	text-decoration: none;
+	text-align: center;
+}
+
+.nav .nav__link:hover {
+	background: #5c8db7;
+}
+
+@media all and (max-width: 800px) {
+	.nav {
+		justify-content: space-around;
+	}
+	.nav .nav__link {
+		flex-grow: 1; /*Растягиваться на всю ширину*/
+	}
+}
+
+@media (max-width: 500px) {
+	.nav {
+	flex-direction: column;
+	}
+}
