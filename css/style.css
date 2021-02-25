@@ -1,73 +1,147 @@
 @media only screen and (min-width:1280px) { /*ПК и более*/
- .header__text {
+	.header__text {
  	font-size: 20pt;
+ }
+	.nav__box {
+ 	width: 300px; /*Определяем ширину меню, относительно разных экранов*/
  }
 }
 
 @media (min-width:1024px) and (max-width:1279px) { /*Планшеты(альбом), нетбуки*/
- .header__text {
+	.header__text {
  	font-size: 24pt;
+ }
+ 	.nav__box {
+ 	width: 300px;
  }
 }
 
 @media (min-width:768px) and (max-width:1023px) { /*Планшеты(портрет)*/
- .header__text {
+	.header__text {
  	font-size: 28pt;
+ }
+  .nav__box {
+ 	width: 300px;
  }
 }
 
 @media (min-width:600px) and (max-width:767px) { /*Небольшие планшеты*/
- .header__text {
+	.header__text {
  	font-size: 32pt;
+ }
+  .nav__box {
+ 	width: 300px;
  }
 }
 
 @media (min-width:480px) and (max-width:599px) { /*Мобильные устройства(альбом)*/
- .header__text {
+	.header__text {
  	font-size: 36pt;
+ }
+  .nav__box {
+ 	width: 100%;
  }
 }
 
 @media screen and (max-width:479px) { /*Мобильные устройства(альбом)*/
- .header__text {
+	.header__text {
  	font-size: 40pt;
+ }
+  .nav__box {
+ 	width: 100%;
  }
 }
 
 @media only screen and (max-width:320px) { /*Мобильные устройства(портрет)*/
- .header__text {
+	.header__text {
  	font-size: 44pt;
+ }
+  .nav__box {
+ 	width: 100%;
  }
 }
 
-.nav {
-	display: flex;
-	justify-content: flex-end; /*Размещение справа*/
-	background: #008aFF;
+#nav__toggle {
+	opacity: 0; /*Прозрачность 0, то есть скрыли чекбокс*/
 }
 
-.nav .nav__link {
-	color: #fff;
-	padding: 15px 10px;
-	text-decoration: none;
-	text-align: center;
+/*теперь делаем, чтобы меню открывалось*/
+#nav__toggle:checked ~ .nav__button > span { /*checked - находил только выбранные или включенные элементы. В данном случае, при активации чекбокса он становится :checked, а комбинатор ~ находит элементы, указанные справа, которые следуют за элементов, указанным слева и имеют с ним общего родителя*/
+	transform: rotate(45deg); /*Повернуть элемент на 45 градусов, поворачивает элементы кнопки меню под разным углом и мы получаем крестик, вместо горизонтальных линий*/
 }
 
-.nav .nav__link:hover {
-	background: #5c8db7;
+#nav__toggle:checked ~ .nav__button > span::before {
+  top: 0;
+  transform: rotate(0);
+}
+#nav__toggle:checked ~ .nav__button > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#nav__toggle:checked ~ .nav__box {
+  visibility: visible;
+  left: 0;
 }
 
-@media all and (max-width: 800px) {
-	.nav {
-		justify-content: space-around;
-	}
-	.nav .nav__link {
-		flex-grow: 1; /*Растягиваться на всю ширину*/
-	}
+.nav__button { /*Стилизация кнопки*/
+	display: flex; /*Объявляем её флекс контейнером*/
+	align-items: center; /*Центрируем содержимое кнопки*/
+	position: fixed; /*Задали фиксированное расположение кнопки с помощью двух следующий свойств*/
+	top: 20px; 
+	left: 20px;
+	width: 26px; /*Размеры кнопки и следующий тег*/
+	height: 26px;
+	cursor: pointer;
+	z-index: 1; /*Из-за того, что позиция фиксированная, то задаем порядок элементов по оси z, то есть кто на что будет наклываться. Элементы с более высоким индексом будут находится перед элементами с более низким индексом относительно оси Z*/
 }
 
-@media (max-width: 500px) {
-	.nav {
-	flex-direction: column;
-	}
+/*Добавляем значок "гамбургера"*/
+.nav__button > span, /*Стиль применится к span, только если он дочерен к .nav__button*/
+.nav__button > span::before,
+.nav__button > span::after {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	background-color: #616161;
+	transition-duration: .25s;
+}
+
+.nav__button > span::before {
+	content: ''; /*поле с текстом, которое появится как бы до чекбокса*/
+	top: -8px; /*по идее смещение этого текста, чтобы не накладывался друг на друга. В нашем случае именно это делает что палочка не одна, а три*/
+}
+
+.nav__button > span::after {
+	content: ''; /*То же что и вверху*/
+	top: 8px; /*То же что и вверху*/
+}
+
+.nav__box { /*контейнер меню*/
+	display: block;
+	position: fixed;
+	visibility: hidden; /*по умолчанию меню скрыто, а открываться будет при установки галки на чекбокс*/
+	top: 0; /*что выползающее меню размещено строго под вверх*/
+	left: -100%; /*прячет изначально меню за экрано слева, чтобы было ощущение, что оно выползает слева при нажимании на чекбокс*/
+	height: 100%; /*Высота меню*/
+	margin: 0; /*Отступы самого меню 0, чтобы было прижато к экрану*/
+	padding: 50px 0; /*поля внутри меню. То есть расстояние до текста. Сверху снизу по 80, по бокам 0*/
+	list-style: none; /*убирает маркер от пунктов меню, так как они список*/
+	text-align: center; /*центрирует пункты меню*/
+	background-color: #eceff1; /*общий фон*/
+	box-shadow: 1px 0px 6px rgba(0, 0, 0, .2); /*по идее создает тень для меню*/
+	transition-duration: 0.25s; /*скорость вылета меню*/
+}
+
+.nav__item {
+	display: block;
+	padding: 12px 24px; /*поля непосредственно пунктов меню*/
+	color: #333; /*цвет текста*/
+	font: 14pt serif;
+	text-decoration: none; /*убирает подчеркивание ссылок по определению которое*/
+	transition-duration: 0.25s; /*Небольшая анимация того, что текст как бы съезжает сверху*/
+}
+
+.nav__item:hover {
+	background: #cfd8dc; /*при наведении на ссылку изменится цвет*/
 }
