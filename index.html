@@ -11,11 +11,17 @@
 	</head>
 	<body>
 			<header>
-				<div class="nav">
-					<a class="nav__link" href="#">Главная</a>
-					<a class="nav__link" href="#">О нас</a>
-					<a class="nav__link" href="#">Продукты</a>
-					<a class="nav__link" href="#">Контакты</a>
+				<div class="hamburger-menu">
+					<input id="nav__toggle" type="checkbox"> <!-- checkbox - элемент управления флажок, который может быть либо установлен, либо снят, либо сразу несколько флажков установить -->
+					<label class="nav__button" for="nav__toggle"><!-- Связываем кнопку и текст с флажком. for такой же как у предыдущего id -->
+						<span></span>
+					</label> 
+					<ul class="nav__box"><!-- Список и меню в нем --> 
+						<li><a class="nav__item" href="#">Главная</a></li>
+						<li><a class="nav__item" href="#">О нас</a></li>
+						<li><a class="nav__item" href="#">Продукты</a></li>
+						<li><a class="nav__item" href="#">Контакты</a></li>
+					</ul>
 				</div>
 				<p class="header__text">Обычный текст, который будет менять свой размер шрифта</p>
 			</header>
