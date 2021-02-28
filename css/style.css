@@ -1,27 +1,48 @@
-@media only screen and (min-width:1280px) { /*ПК и более*/
+@media only screen and (min-width:1367px) { /*ПК и более*/
 	.header__text {
  	font-size: 20pt;
+ 	margin: 50px 0 0 0;
  }
 	.nav__box {
  	width: 300px; /*Определяем ширину меню, относительно разных экранов*/
  }
+ .nav__button {
+ 	left: -30px;
+ }
+ .nav__toggle {
+ 	left: -30px;
+ }
 }
 
-@media (min-width:1024px) and (max-width:1279px) { /*Планшеты(альбом), нетбуки*/
+@media (min-width:1024px) and (max-width:1366px) { /*Планшеты(альбом), нетбуки*/
 	.header__text {
  	font-size: 24pt;
+ 	margin: 50px 0 0 0;
  }
  	.nav__box {
  	width: 300px;
+ }
+  .nav__button {
+ 	left: 20px;
+ }
+ .nav__toggle {
+ 	left: 20px;
  }
 }
 
 @media (min-width:768px) and (max-width:1023px) { /*Планшеты(портрет)*/
 	.header__text {
  	font-size: 28pt;
+ 	margin: 50px 0 0 0;
  }
   .nav__box {
  	width: 300px;
+ }
+  .nav__button {
+ 	left: 20px;
+ }
+ .nav__toggle {
+ 	left: 20px;
  }
 }
 
@@ -32,6 +53,12 @@
   .nav__box {
  	width: 300px;
  }
+  .nav__button {
+ 	left: 20px;
+ }
+ .nav__toggle {
+ 	left: 20px;
+ }
 }
 
 @media (min-width:480px) and (max-width:599px) { /*Мобильные устройства(альбом)*/
@@ -40,6 +67,12 @@
  }
   .nav__box {
  	width: 100%;
+ }
+  .nav__button {
+ 	left: 20px;
+ }
+ .nav__toggle {
+ 	left: 20px;
  }
 }
 
@@ -50,6 +83,12 @@
   .nav__box {
  	width: 100%;
  }
+  .nav__button {
+ 	left: 20px;
+ }
+ .nav__toggle {
+ 	left: 20px;
+ }
 }
 
 @media only screen and (max-width:320px) { /*Мобильные устройства(портрет)*/
@@ -59,10 +98,17 @@
   .nav__box {
  	width: 100%;
  }
+  .nav__button {
+ 	left: 20px;
+ }
+ .nav__toggle {
+ 	left: 20px;
+ }
 }
 
 #nav__toggle {
 	opacity: 0; /*Прозрачность 0, то есть скрыли чекбокс*/
+	position: fixed;
 }
 
 /*теперь делаем, чтобы меню открывалось*/
@@ -88,7 +134,7 @@
 	align-items: center; /*Центрируем содержимое кнопки*/
 	position: fixed; /*Задали фиксированное расположение кнопки с помощью двух следующий свойств*/
 	top: 20px; 
-	left: 20px;
+	left: ;
 	width: 26px; /*Размеры кнопки и следующий тег*/
 	height: 26px;
 	cursor: pointer;
